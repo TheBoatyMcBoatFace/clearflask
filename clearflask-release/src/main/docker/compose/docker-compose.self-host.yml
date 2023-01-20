@@ -1,6 +1,6 @@
 ## SPDX-FileCopyrightText: 2019-2022 Matus Faro <matus@smotana.com>
 ## SPDX-License-Identifier: Apache-2.0
-version: '3.8'
+version: "3.8"
 volumes:
   data:
     driver: local
@@ -31,7 +31,7 @@ services:
     volumes:
       - ./server:/opt/clearflask/
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/api/health" ]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
       interval: 5s
       timeout: 15s
       retries: 2
@@ -39,10 +39,10 @@ services:
   mysql-db:
     image: mysql:5.7
     command:
-      - 'mysqld'
-      - '--sql-mode=IGNORE_SPACE'
-      - '--explicit-defaults-for-timestamp'
-      - '--secure-file-priv=/tmp'
+      - "mysqld"
+      - "--sql-mode=IGNORE_SPACE"
+      - "--explicit-defaults-for-timestamp"
+      - "--secure-file-priv=/tmp"
     volumes:
       - ./killbill-db:/docker-entrypoint-initdb.d
     ports:
@@ -71,10 +71,10 @@ services:
       - 4566
       - 4571
     environment:
-      - DEFAULT_REGION=us-east-1
+      #  - DEFAULT_REGION=us-east-1
       - LOCALSTACK_HOSTNAME=localstack
       - HOSTNAME_EXTERNAL=localstack
-      - SERVICES=dynamodb,ses,s3
+      # - SERVICES=dynamodb,ses,s3
       - LS_LOG=warn
       - START_WEB=0
       - USE_SSL=0
