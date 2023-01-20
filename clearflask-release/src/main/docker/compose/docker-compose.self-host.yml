@@ -10,8 +10,8 @@ services:
     depends_on:
       - clearflask-server
     ports:
-      - 80:9080
-      - 443:9443
+      - 9080:9080
+      - 9444:9443
     environment:
       - NODE_ENV=production
       - ENV=selfhost
